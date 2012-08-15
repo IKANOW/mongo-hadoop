@@ -411,7 +411,7 @@ public class MongoConfig {
         MongoConfigUtil.setNoTimeout( _conf, value );
     }
 
-    final Configuration _conf;
+    protected final Configuration _conf;
 
     private static final Log LOG = LogFactory.getLog( MongoConfig.class );
 }

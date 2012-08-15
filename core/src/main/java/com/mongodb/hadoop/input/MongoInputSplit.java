@@ -133,7 +133,7 @@ public class MongoInputSplit extends InputSplit implements Writable {
                    + _skip + ", noTimeout = " + _notimeout + "}" );
     }
 
-    DBCursor getCursor(){
+    protected DBCursor getCursor(){
         // Return the cursor with the split's query, etc. already slotted in for
         // them.
         // todo - support limit/skip
@@ -146,13 +146,13 @@ public class MongoInputSplit extends InputSplit implements Writable {
         return _cursor;
     }
 
-    BSONEncoder getBSONEncoder(){
+    protected BSONEncoder getBSONEncoder(){
         if (_bsonEncoder == null) 
             _bsonEncoder = new BasicBSONEncoder();
         return _bsonEncoder;
     }
     
-    BSONDecoder getBSONDecoder(){
+    protected BSONDecoder getBSONDecoder(){
         if (_bsonDecoder == null)
             _bsonDecoder = new BasicBSONDecoder();
         return _bsonDecoder;
@@ -226,18 +226,18 @@ public class MongoInputSplit extends InputSplit implements Writable {
         return result;
     }
 
-    private MongoURI _mongoURI;
-    private String _keyField;
-    private DBObject _querySpec;
-    private DBObject _fieldSpec;
-    private DBObject _sortSpec;
-    private boolean _notimeout;
-    private int _limit = 0;
-    private int _skip = 0;
-    private long _length = -1;
-    private transient DBCursor _cursor;
-    private transient BSONEncoder _bsonEncoder;
-    private transient BSONDecoder _bsonDecoder;
+    protected MongoURI _mongoURI;
+    protected String _keyField;
+    protected DBObject _querySpec;
+    protected DBObject _fieldSpec;
+    protected DBObject _sortSpec;
+    protected boolean _notimeout;
+    protected int _limit = 0;
+    protected int _skip = 0;
+    protected long _length = -1;
+    protected transient DBCursor _cursor;
+    protected transient BSONEncoder _bsonEncoder;
+    protected transient BSONDecoder _bsonDecoder;
 
     private static final Log log = LogFactory.getLog( MongoInputSplit.class );
 
